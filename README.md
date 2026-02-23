@@ -17,13 +17,8 @@ A modern personal portfolio built with React 19 and TypeScript, featuring an AI-
 ---
 
 ## Live Demo
-
-<<<<<<< HEAD
-**[https://portfolio-nine-wine-85.vercel.app/]**
-
-=======
 **[https://portfolio-nine-wine-85.vercel.app/]** 
->>>>>>> 0e0cc75f20597c747c0634bb3f844430a51ef587
+
 ![demo](demo.png)
 
 ---
