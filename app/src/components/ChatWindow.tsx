@@ -64,7 +64,12 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
       });
 
       if (!response.ok) {
-        throw new Error(`Server responded with ${response.status}`);
+        let errorMsg = `Server responded with ${response.status}`;
+        try {
+          const errData = await response.json();
+          if (errData.error) errorMsg = errData.error;
+        } catch {}
+        throw new Error(errorMsg);
       }
 
       const reader = response.body?.getReader();
@@ -97,36 +102,24 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
         }
       }
 
-      // If no content was streamed, try sync endpoint
+      // If streaming completed but produced no content, show fallback
       if (!fullContent) {
-        const syncResponse = await fetch(`/api/chat/sync`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            messages: updatedMessages
-              .filter(m => m.id !== '0')
-              .map(m => ({ role: m.role, content: m.content })),
-          }),
-        });
-
-        if (syncResponse.ok) {
-          const data = await syncResponse.json();
-          fullContent = data.content;
-          setMessages(prev =>
-            prev.map(m =>
-              m.id === assistantId ? { ...m, content: fullContent } : m
-            )
-          );
-        }
+        setMessages(prev =>
+          prev.map(m =>
+            m.id === assistantId
+              ? { ...m, content: "Sorry, I didn't get a response. Please try again!" }
+              : m
+          )
+        );
       }
     } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Unknown error';
       setMessages(prev =>
         prev.map(m =>
           m.id === assistantId
             ? {
                 ...m,
-                content:
-                  "Sorry, I couldn't connect to the AI server. Make sure the chat backend is running. You can still explore the portfolio directly!",
+                content: `Sorry, something went wrong: ${errorMessage}. You can still explore the portfolio directly!`,
               }
             : m
         )

@@ -139,7 +139,14 @@ export default async function handler(req) {
 
     if (!response.ok) {
       const errText = await response.text();
-      return new Response(JSON.stringify({ error: 'Anthropic API request failed', detail: errText }), {
+      let userMessage = 'Anthropic API request failed';
+      try {
+        const errData = JSON.parse(errText);
+        if (errData.error?.message) {
+          userMessage = errData.error.message;
+        }
+      } catch {}
+      return new Response(JSON.stringify({ error: userMessage, detail: errText }), {
         status: 502,
         headers: { 'Content-Type': 'application/json' },
       });
