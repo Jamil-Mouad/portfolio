@@ -9,6 +9,7 @@ const MissionSection = lazy(() => import('./sections/MissionSection'));
 const SkillsShowcaseSection = lazy(() => import('./sections/SkillsShowcaseSection'));
 const ProjectShowcase = lazy(() => import('./sections/ProjectShowcase'));
 const TimelineSection = lazy(() => import('./sections/TimelineSection'));
+const ContactSection = lazy(() => import('./sections/ContactSection'));
 const Footer = lazy(() => import('./sections/Footer'));
 const ChatWindow = lazy(() => import('./components/ChatWindow'));
 
@@ -25,6 +26,7 @@ function App() {
 
   // Header background opacity based on scroll
   const headerBgOpacity = useTransform(scrollY, [0, 100], [0, 0.95]);
+  const headerBg = useTransform(headerBgOpacity, v => `rgba(229, 229, 229, ${v})`);
 
   useEffect(() => {
     // Trigger load animation
@@ -42,12 +44,7 @@ function App() {
       {/* Fixed Header */}
       <motion.div
         className="fixed top-0 left-0 right-0 z-50"
-        style={{
-          backgroundColor: useTransform(
-            headerBgOpacity,
-            v => `rgba(229, 229, 229, ${v})`
-          )
-        }}
+        style={{ backgroundColor: headerBg }}
       >
         <Header />
       </motion.div>
@@ -69,6 +66,9 @@ function App() {
         </Suspense>
         <Suspense fallback={<SectionFallback />}>
           <TimelineSection />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <ContactSection />
         </Suspense>
         <Suspense fallback={<SectionFallback />}>
           <Footer />
