@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import MobileMenu from './MobileMenu';
+import { siteConfig } from '../config/site';
 
 const Header = () => {
   return (
@@ -84,42 +85,12 @@ const Header = () => {
             Contact
           </a>
           <a
-            href="/cv.pdf"
+            href={siteConfig.resumeUrl}
             download
             className="px-4 py-1.5 text-sm bg-ig-text text-white rounded-full hover:bg-ig-text/90 transition-colors duration-200"
           >
             CV
           </a>
-          {/* Small Code Icon */}
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 28 28"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="text-ig-text"
-          >
-            <path
-              d="M8 10L3 14L8 18"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M20 10L25 14L20 18"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M16 6L12 22"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>
         </nav>
 
         {/* Mobile Menu */}

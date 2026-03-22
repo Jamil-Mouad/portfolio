@@ -190,107 +190,36 @@ const ProjectShowcase = () => {
           ))}
         </div>
 
-        {/* Skills Section */}
+        {/* Focus Areas */}
         <div id="skills" className="mt-20">
           <FadeInView delay={0.3}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div>
-                <p className="text-sm text-ig-text-secondary mb-4">Technical Skills</p>
-                <h4 className="font-serif text-xl md:text-2xl text-ig-text mb-4">
-                  Comprehensive full-stack expertise
-                </h4>
-                <p className="text-base text-ig-text-secondary mb-6">
-                  With years of experience across multiple domains, I bring a versatile skill set to every project. From database design to responsive UI, I handle it all.
-                </p>
-                <div className="space-y-4">
-                  <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-sm text-ig-text">Backend (Java/Spring)</span>
-                      <span className="text-sm text-ig-text-secondary">55%</span>
-                    </div>
-                    <div className="w-full bg-ig-border rounded-full h-2">
-                      <motion.div
-                        className="bg-ig-text h-2 rounded-full"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: '55%' }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.2 }}
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-sm text-ig-text">Frontend (Angular/React)</span>
-                      <span className="text-sm text-ig-text-secondary">45%</span>
-                    </div>
-                    <div className="w-full bg-ig-border rounded-full h-2">
-                      <motion.div
-                        className="bg-ig-text h-2 rounded-full"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: '45%' }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.3 }}
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-sm text-ig-text">Databases</span>
-                      <span className="text-sm text-ig-text-secondary">60%</span>
-                    </div>
-                    <div className="w-full bg-ig-border rounded-full h-2">
-                      <motion.div
-                        className="bg-ig-text h-2 rounded-full"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: '60%' }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.4 }}
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-sm text-ig-text">Mobile (Flutter)</span>
-                      <span className="text-sm text-ig-text-secondary">30%</span>
-                    </div>
-                    <div className="w-full bg-ig-border rounded-full h-2">
-                      <motion.div
-                        className="bg-ig-text h-2 rounded-full"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: '30%' }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.5 }}
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-sm text-ig-text">DevOps & CI/CD</span>
-                      <span className="text-sm text-ig-text-secondary">30%</span>
-                    </div>
-                    <div className="w-full bg-ig-border rounded-full h-2">
-                      <motion.div
-                        className="bg-ig-text h-2 rounded-full"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: '30%' }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.6 }}
-                      />
-                    </div>
-                  </div>
-                </div>
+              <p className="text-sm text-ig-text-secondary mb-4">What I Focus On</p>
+              <h4 className="font-serif text-xl md:text-2xl text-ig-text mb-8">
+                Core areas of expertise
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  { title: 'Backend Systems', desc: 'Java Spring Boot, Node.js, REST APIs, microservices architecture', icon: '{}' },
+                  { title: 'Frontend Development', desc: 'React, Angular, Next.js — responsive, accessible, and performant UIs', icon: '</>' },
+                  { title: 'Databases', desc: 'PostgreSQL, MySQL, MongoDB, Oracle — schema design and optimization', icon: 'DB' },
+                  { title: 'Mobile Development', desc: 'Cross-platform apps with Flutter and Dart', icon: '[]' },
+                  { title: 'DevOps & CI/CD', desc: 'Docker, GitLab CI, Terraform, Prometheus/Grafana monitoring', icon: '>_' },
+                  { title: 'Real-Time Systems', desc: 'WebSocket, Socket.IO, STOMP — live updates and event-driven design', icon: '<<' },
+                ].map((area, i) => (
+                  <motion.div
+                    key={area.title}
+                    className="p-6 bg-white rounded-xl border border-ig-border/50 shadow-sm hover:shadow-lg transition-shadow duration-300"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1, duration: 0.4 }}
+                  >
+                    <span className="inline-block text-lg font-mono text-ig-text-secondary mb-3">{area.icon}</span>
+                    <h5 className="font-serif text-lg text-ig-text mb-2">{area.title}</h5>
+                    <p className="text-sm text-ig-text-secondary leading-relaxed">{area.desc}</p>
+                  </motion.div>
+                ))}
               </div>
-              <div className="relative aspect-video rounded-lg overflow-hidden bg-ig-bg flex items-center justify-center">
-                <div className="grid grid-cols-3 gap-4 p-8">
-                  <img src="/assets/python.webp" alt="Python" loading="lazy" className="w-16 h-16 object-contain" />
-                  <img src="/assets/spring.webp" alt="Spring" loading="lazy" className="w-16 h-16 object-contain" />
-                  <img src="/assets/react-removebg-preview.webp" alt="Web Stack" loading="lazy" className="w-16 h-16 object-contain" />
-                  <img src="/assets/logo-java.webp" alt="Java" loading="lazy" className="w-16 h-16 object-contain" />
-                  <img src="/assets/logo-flutter.webp" alt="Flutter" loading="lazy" className="w-16 h-16 object-contain" />
-                  <img src="/assets/logo-mongodb.webp" alt="MongoDB" loading="lazy" className="w-16 h-16 object-contain" />
-                </div>
-              </div>
-            </div>
           </FadeInView>
         </div>
       </div>

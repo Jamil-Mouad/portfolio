@@ -78,7 +78,7 @@ GitHub: https://github.com/Jamil-Mouad/evaluation_file
 
 ## Social Links
 - GitHub: https://github.com/Jamil-Mouad
-- LinkedIn: https://linkedin.com/in/username
+- LinkedIn: https://www.linkedin.com/in/jamil-mouad-3b8bab3b1
 
 ## Instructions
 - If asked about topics unrelated to Mouad or his work, politely redirect the conversation
@@ -115,10 +115,25 @@ export default async function handler(req) {
     });
   }
 
-  const anthropicMessages = messages.map(m => ({
-    role: m.role,
-    content: m.content,
-  }));
+  // Input validation: whitelist roles, enforce string content, cap length
+  const MAX_MESSAGES = 20;
+  const MAX_CONTENT_LENGTH = 4000;
+  const ALLOWED_ROLES = new Set(['user', 'assistant']);
+
+  const anthropicMessages = messages
+    .filter(m => ALLOWED_ROLES.has(m.role) && typeof m.content === 'string')
+    .slice(-MAX_MESSAGES)
+    .map(m => ({
+      role: m.role,
+      content: m.content.slice(0, MAX_CONTENT_LENGTH),
+    }));
+
+  if (anthropicMessages.length === 0) {
+    return new Response(JSON.stringify({ error: 'No valid messages provided' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
 
   try {
     const response = await fetch('https://api.anthropic.com/v1/messages', {
@@ -138,8 +153,8 @@ export default async function handler(req) {
     });
 
     if (!response.ok) {
-      const errText = await response.text();
-      return new Response(JSON.stringify({ error: 'Anthropic API request failed', detail: errText }), {
+      console.error('Anthropic API error:', await response.text());
+      return new Response(JSON.stringify({ error: 'AI service temporarily unavailable' }), {
         status: 502,
         headers: { 'Content-Type': 'application/json' },
       });
@@ -195,7 +210,8 @@ export default async function handler(req) {
       },
     });
   } catch (err) {
-    return new Response(JSON.stringify({ error: 'Cannot connect to Anthropic API', detail: err.message }), {
+    console.error('Anthropic API connection error:', err.message);
+    return new Response(JSON.stringify({ error: 'AI service temporarily unavailable' }), {
       status: 502,
       headers: { 'Content-Type': 'application/json' },
     });

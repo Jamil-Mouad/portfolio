@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Twitter, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
 import FadeInView from '../components/FadeInView';
 import { siteConfig } from '../config/site';
 
@@ -7,7 +7,6 @@ const Footer = () => {
   const socialLinks = [
     { name: 'GitHub', href: siteConfig.social.github, icon: Github },
     { name: 'LinkedIn', href: siteConfig.social.linkedin, icon: Linkedin },
-    { name: 'Twitter', href: siteConfig.social.twitter, icon: Twitter },
   ];
 
   const scrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -23,7 +22,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer id="contact" className="relative w-full min-h-screen overflow-hidden bg-[#0f0f0f]">
+    <footer className="relative w-full min-h-screen overflow-hidden bg-[#0f0f0f]">
       {/* Animated aurora/mesh gradient background */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Aurora blobs */}

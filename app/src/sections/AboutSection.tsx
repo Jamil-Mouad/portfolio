@@ -27,7 +27,7 @@ const AboutSection = ({ onChatOpen }: AboutSectionProps) => {
 
               {/* Floating accent */}
               <motion.div
-                className="absolute -bottom-4 -right-4 w-64 h-36 bg-white rounded-2xl shadow-lg flex items-center justify-center z-10"
+                className="absolute -bottom-4 -right-4 w-64 h-36 bg-ig-bg rounded-2xl shadow-lg border border-ig-border/50 flex items-center justify-center z-10"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}

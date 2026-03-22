@@ -1,6 +1,7 @@
 import { Suspense, lazy, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
+import SplineErrorBoundary from './SplineErrorBoundary';
 
 const Spline = lazy(() => import('@splinetool/react-spline'));
 
@@ -81,12 +82,14 @@ const Spline3DModel = ({ className = '', onChatOpen }: Spline3DModelProps) => {
       onClick={onChatOpen}
     >
       {shouldLoad ? (
-        <Suspense fallback={<LoadingFallback />}>
-          <Spline
-            scene="https://prod.spline.design/mPMAqOHq4WavjrIT/scene.splinecode"
-            className="w-full h-full"
-          />
-        </Suspense>
+        <SplineErrorBoundary onChatOpen={onChatOpen}>
+          <Suspense fallback={<LoadingFallback />}>
+            <Spline
+              scene="https://prod.spline.design/mPMAqOHq4WavjrIT/scene.splinecode"
+              className="w-full h-full"
+            />
+          </Suspense>
+        </SplineErrorBoundary>
       ) : (
         <LoadingFallback />
       )}
