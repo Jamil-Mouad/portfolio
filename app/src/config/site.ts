@@ -4,7 +4,7 @@ const CAREER_START_YEAR = 2023;
 export const siteConfig = {
   name: 'JAMIL Mouad',
   title: 'Full-Stack Developer | DevOps Enthusiast',
-  email: 'jamilmouad25000@gmail.com',
+  email: 'jamilmouad26000@gmail.com',
   location: 'Casablanca, Morocco',
   url: 'https://portfolio-nine-wine-85.vercel.app',
   yearsExperience: Math.max(1, new Date().getFullYear() - CAREER_START_YEAR),
