@@ -59,7 +59,7 @@ A modern personal portfolio built with React 19 and TypeScript, featuring an AI-
 
 ## Connect
 
-[![Email](https://img.shields.io/badge/Email-jamilmouad25000%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:jamilmouad25000@gmail.com)
+[![Email](https://img.shields.io/badge/Email-jamilmouad26000%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:jamilmouad26000@gmail.com)
 [![GitHub](https://img.shields.io/badge/GitHub-Jamil--Mouad-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Jamil-Mouad)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-jamil--mouad-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jamil-mouad-3b8bab3b1)
 [![CV](https://img.shields.io/badge/Download_CV-PDF-EC1C24?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](app/public/cv.pdf)

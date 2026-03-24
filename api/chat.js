@@ -4,7 +4,7 @@ const SYSTEM_PROMPT = `You are Mouad JAMIL's personal AI assistant embedded in h
 - Name: JAMIL Mouad
 - Title: Full-Stack Developer | DevOps Enthusiast
 - Location: Khouribga, Morocco
-- Email: jamilmouad25000@gmail.com
+- Email: jamilmouad26000@gmail.com
 - Experience: 2+ years of learning and building projects
 - Bio: A polyvalent developer passionate about building modern, scalable applications. Specializes in full-stack development with expertise across Java Spring Boot, React, Angular, Flutter, and DevOps practices. Thrives on solving complex problems and delivering end-to-end solutions.
 
